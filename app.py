@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request
 import requests
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-SUPABASE_URL = "https://oghgnfykbvbzuhvndcpc.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9naGduZnlrYnZienVodm5kY3BjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzNzgyMDgsImV4cCI6MjA2NDk1NDIwOH0.lOKu4dlxJkbcjpkvjNsjxm9lGIAA0ERc-jqJtXNTvnk"
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+
 headers = {
     "apikey": SUPABASE_KEY,
     "Authorization": f"Bearer {SUPABASE_KEY}",
@@ -32,7 +34,6 @@ def index():
 
         try:
             response = requests.post(student_url, json=data, headers=headers)
-
             if response.status_code == 201:
                 return "Successfully added"
             else:
@@ -45,4 +46,4 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
