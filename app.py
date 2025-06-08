@@ -3,12 +3,12 @@ import psycopg2
 
 app = Flask(__name__)
 
-# PostgreSQL connection using provided credentials
+# Supabase PostgreSQL connection
 conn = psycopg2.connect(
-    dbname="WASHINGTON",
+    dbname="postgres",
     user="postgres",
-    password="Bador",
-    host="localhost",
+    password="Donald@200422",  # your Supabase DB password
+    host="db.oghgnfykbvbzuhvndcpc.supabase.co",
     port="5432"
 )
 cursor = conn.cursor()
