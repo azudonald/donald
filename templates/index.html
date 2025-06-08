@@ -19,19 +19,35 @@
     }
 
     .form-container {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05); /* Transparent */
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       border-radius: 15px;
-      padding: 2rem;
+      padding: 1rem 1.5rem; /* Reduced padding (height) */
       width: 90%;
       max-width: 360px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       margin-top: 0;
+      color: white;
     }
 
-    .form-control::placeholder {
-      color: #6c757d;
+    .form-container h3 {
+      color: white;
+    }
+
+    .form-container input {
+      color: black; /* Input text color */
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .form-container input::placeholder {
+      color: black; /* Placeholder color */
+    }
+
+    .btn-light {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: black !important; /* Submit button text */
+      font-weight: bold;
     }
 
     .toast-container {
@@ -48,7 +64,7 @@
       }
 
       .form-container {
-        padding: 1.5rem;
+        padding: 1rem;
       }
     }
   </style>
@@ -56,15 +72,15 @@
 <body>
 
   <div class="form-container">
-    <h3 class="text-center mb-4 text-white">Let's Connect</h3>
+    <h3 class="text-center mb-3">Let's Connect</h3>
     <form id="connectForm" method="POST" action="/">
-      <div class="mb-3">
+      <div class="mb-2">
         <input type="text" class="form-control" name="name" placeholder="Full Name" required>
       </div>
-      <div class="mb-3">
+      <div class="mb-2">
         <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
       </div>
-      <div class="mb-3">
+      <div class="mb-2">
         <input type="text" class="form-control" name="programme" placeholder="Programme of Study" required>
       </div>
       <div class="mb-3">
@@ -77,18 +93,14 @@
   <div class="toast-container">
     <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
-        <div class="toast-body">
-          Successfully added!
-        </div>
+        <div class="toast-body">Successfully added!</div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>
 
     <div id="errorToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
-        <div class="toast-body">
-          Failed to add details, please try again.
-        </div>
+        <div class="toast-body">Failed to add details, please try again.</div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>
